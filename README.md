@@ -5,7 +5,7 @@
 
 # Istio Operator
 
-## Oerview
+## Overview
 
 The main purpose of this repository is to consume the micro-manifests from the
 [istio/installer](https://github.com/istio/installer) repository and generate validated
