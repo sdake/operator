@@ -5,23 +5,32 @@
 
 # Istio Operator
 
-Update 4/22/19
+## Oerview
 
-This repo is for the initial, alpha version of the official Istio install operator. It's currently only open to the core 
-design team for commits, while we merge prototypes that evolved in parallel. Once we have
-a basic functional skeleton in place we'll open the repo up for community contributions.
+The main purpose of this repository is to consume the micro-manifests from the
+[istio/installer](https://github.com/istio/installer) repository and generate validated
+Kubernetes manifests. The micro-manifests contain various steps or logical groupings of
+`gotpl` templated manifests. The operator's main job is to order and validate the generation
+or rollout of these micro-manifests into a functional working deployment of Istio.
 
-The initial goals/MVP for the operator are:
+This repository is under construction and may generate frustration for developers or SREs
+consuming or developing this code base. If you find a problem or require an enhancement, please
+[file an issue](https://github.com/istio/operator/blob/master/BUGS-AND-FEATURE-REQUESTS.md)
+in Istio's centralized Issue trackers.
 
-1.   Replace helm tiller as the recommended install upgrade controller. We will continue to use helm templates and
-the helm library to generate manifests under the hood, but will take ownership of the logic behind the install API.
-The operator will have modes of operation analogous to tiller - controller in and out of cluster and one-shot manifest
-generation for use with external toolchains.
-1.   Provide a structured API to eventually replace the de-facto values.yaml API. This API will be partially moved
-to CRDs used to configure Istio components directly, hence the operator API will only contain the portions that will 
-remain in the operator CRD, and continue to use values.yaml for the parameters that will be moved to component CRDs.
-The API will be aligned with Istio a-la-carte/building blocks philosophy and have a functional structure.
-1.   Add an overlay mechanism to allow users to customize the rendered manifest in a way that survives upgrades. 
-1.   Support upgrade, both in-place and dual control plane version rollover. The latter will be supported through the 
-use of the [istio/installer](https://github.com/istio/installer) charts.
-1.   Provide validation of all parameters.
+Even better, get involved in Operator development work and
+[contribute](https://github.com/istio/operator/blob/master/CONTRIBUTING.md)!
+
+## Initial Goals
+
+The MVP for the operator is:
+
+- Provide a mode of operation that uses a controller to install generated manifests.
+- Provide a mode of operation that generates a Kubernetes manifest.
+- Provide a structured API to eventually replace the de-facto `values.yaml` API.
+- Provide an API aligned with an Istio a-la-carte building blocks philosophy.
+- Provide a functional structure.
+- Provide a mechanism for manifests to be customized that survive upgrades.
+- Provide in-place upgrades.
+- Provide canary rollout upgrades.
+- Provide validation of all parameters.
