@@ -53,6 +53,7 @@ clean-proto:
 	rm -f $(api_pb_gos)
 
 lint:
+	export PATH=${PATH}:${GOPATH}/bin
 	@scripts/check_license.sh
 	@scripts/run_golangci.sh
 
