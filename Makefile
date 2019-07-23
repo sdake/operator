@@ -75,6 +75,9 @@ include Makefile.common.mk
 coverage:
 	scripts/codecov.sh
 
+test:
+	GO111MODULE=on go test -race ./...
+
 # get imported protos to $GOPATH
 get_dep_proto:
 	GO111MODULE=off go get k8s.io/api/core/v1 k8s.io/api/autoscaling/v2beta1 k8s.io/apimachinery/pkg/apis/meta/v1/ github.com/gogo/protobuf/...
