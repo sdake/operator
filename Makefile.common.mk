@@ -34,7 +34,7 @@ RUN = docker run -t --sig-proxy=true -u $(UID) --rm \
 	--mount type=bind,source="$(GOBIN_SOURCE)",destination="/go/out/bin" \
 	-w /work $(IMG)
 
-#	-v /etc/timezeone:/etc/timezeone:ro \
+# -v /etc/timezeone:/etc/timezeone:ro \
 # Set the enviornment variable USE_LOCAL_TOOLCHAIN to 1 to use the
 # systemwide toolchain. Otherwise use a fairly tidy build container to
 # build the repository. In this second mode of operation, only docker
