@@ -117,4 +117,4 @@ gen_patch_values:
 
 
 mesh: vfsgen
-	go build -o ${GOPATH}/bin/mesh ./cmd/mesh.go
+	go build -o ${GOBIN}/mesh ./cmd/mesh.go

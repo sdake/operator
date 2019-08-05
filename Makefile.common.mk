@@ -22,6 +22,7 @@
 IMG = docker.io/sdake/build-tools:2019-08-03
 UID = $(shell id -u)
 PWD = $(shell pwd)
+GOBIN ?= $(GOPATH)/bin
 
 RUN = docker run -t --sig-proxy=true -u $(UID) --rm \
 	-v /etc/passwd:/etc/passwd:ro \
@@ -31,6 +32,7 @@ RUN = docker run -t --sig-proxy=true -u $(UID) --rm \
 	--mount type=bind,source="$(PWD)",destination="/work" \
 	--mount type=volume,source=istio-go-mod,destination="/go/pkg/mod" \
 	--mount type=volume,source=istio-go-cache,destination="/gocache" \
+	--mount type=bind,source="$(GOBIN)",destination="/go/out/bin" \
 	-w /work $(IMG)
 
 # Set the enviornment variable USE_LOCAL_TOOLCHAIN to 1 to use the
