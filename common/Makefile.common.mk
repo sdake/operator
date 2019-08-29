@@ -57,4 +57,10 @@ update-common:
 	@cp -r common-files/files/* .
 	@rm -fr common-files
 
-.PHONY: lint-dockerfiles lint-scripts lint-yaml lint-copyright-banner lint-go lint-pyhton lint-helm format-go format-python update-common
+update-common-protos:
+	@git clone --depth 1 --single-branch --branch record_protos https://github.com/sdake/common-files
+	@cd common-files ; git rev-parse HEAD >files/common/.commonfiles.sha
+	@cp -ar common-files/protos protos
+	@rm -fr common-files
+
+.PHONY: lint-dockerfiles lint-scripts lint-yaml lint-copyright-banner lint-go lint-pyhton lint-helm format-go format-python update-common update-common-protos

@@ -58,7 +58,7 @@ mesh: vfsgen
 
 repo_dir := .
 out_path = /tmp
-protoc = protoc -I/usr/include/protobuf -I.
+protoc = protoc -Iprotos -I.
 
 go_plugin_prefix := --go_out=plugins=grpc,
 go_plugin := $(go_plugin_prefix):$(out_path)
