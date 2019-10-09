@@ -80,7 +80,7 @@ docker.push:
 
 docker.save:
 	mkdir -p /work/out/linux_amd64_release/docker
-	docker save $(HUB)/operator:$(TAG) -o /work/out/linux_amd64_release/docker/operator.tar.gz
+	docker save $(HUB)/operator:$(TAG) -o /work/out/linux_amd64_release/docker/operator.tar
 
 docker.all: docker docker.push
 
