@@ -28,6 +28,7 @@
 # figure out all the tools you need in your environment to make that work.
 export BUILD_WITH_CONTAINER ?= 0
 
+
 LOCAL_ARCH := $(shell uname -m)
 ifeq ($(LOCAL_ARCH),x86_64)
     TARGET_ARCH ?= amd64
@@ -51,6 +52,9 @@ else
 endif
 
 export TARGET_OUT ?= $(shell pwd)/out/$(TARGET_ARCH)_$(TARGET_OS)
+
+# should be /gobin
+export GOBIN ?= /tmp/go
 
 ifeq ($(BUILD_WITH_CONTAINER),1)
 export TARGET_OUT = /work/out/$(TARGET_ARCH)_$(TARGET_OS)
@@ -88,6 +92,7 @@ endif
 MAKE = $(RUN) make --no-print-directory -e -f Makefile.core.mk
 
 %:
+	@mkdir -p $(GOBIN)
 	@$(MAKE) $@
 
 default:

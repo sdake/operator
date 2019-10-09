@@ -62,7 +62,6 @@ clean: clean-values clean-types clean-vfs clean-charts
 default: mesh
 
 mesh: vfsgen
-	mkdir $(GOBIN)
 	go build -o $(GOBIN)/mesh ./cmd/mesh.go
 	GOARCH=$(TARGET_ARCH) GOOS=$(TARGET_OS) go build -o $(TARGET_OUT)/mesh ./cmd/mesh.go
 
