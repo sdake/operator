@@ -69,6 +69,7 @@ require (
 	k8s.io/kube-proxy v0.0.0-00010101000000-000000000000 // indirect
 	k8s.io/kubectl v0.0.0-20191003004222-1f3c0cd90ca9
 	sigs.k8s.io/controller-runtime v0.2.2
+	sigs.k8s.io/kind v0.5.1 // indirect
 	sigs.k8s.io/yaml v1.1.0
 )
 
