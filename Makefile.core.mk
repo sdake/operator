@@ -78,9 +78,9 @@ docker: controller
 docker.push:
 	docker push $(HUB)/operator:$(TAG)
 
-docker.save:
-	mkdir -p /work/out/linux_amd64_release/docker
-	docker save $(HUB)/operator:$(TAG) -o /work/out/linux_amd64_release/docker/operator.tar
+docker.save: docker
+	mkdir -p $(TARGET_OUT)_release/docker
+	docker save $(HUB)/operator:$(TAG) -o $(TARGET_OUT)_release/docker/operator.tar
 
 docker.all: docker docker.push
 
