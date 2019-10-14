@@ -79,8 +79,8 @@ docker.push:
 	docker push $(HUB)/operator:$(TAG)
 
 docker.save: docker
-	mkdir -p $(TARGET_OUT)_release/docker
-	docker save $(HUB)/operator:$(TAG) -o $(TARGET_OUT)_release/docker/operator.tar
+	mkdir -p $(TARGET_OUT)/release/docker
+	docker save $(HUB)/operator:$(TAG) -o $(TARGET_OUT)/release/docker/operator.tar
 
 docker.all: docker docker.push
 
