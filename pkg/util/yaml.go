@@ -18,9 +18,11 @@ import (
 	"bytes"
 	"strings"
 
-	"github.com/gogo/protobuf/jsonpb"
-	"github.com/gogo/protobuf/proto"
+       "github.com/gogo/protobuf/proto"
+
 	jsonpb2 "github.com/golang/protobuf/jsonpb"
+
+	"github.com/golang/protobuf/jsonpb"
 	"github.com/kylelemons/godebug/diff"
 	"sigs.k8s.io/yaml"
 )

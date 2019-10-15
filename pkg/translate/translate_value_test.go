@@ -18,7 +18,7 @@ import (
 	"testing"
 
 	"github.com/ghodss/yaml"
-	"github.com/gogo/protobuf/jsonpb"
+        "github.com/golang/protobuf/jsonpb"
 	"github.com/kr/pretty"
 
 	"istio.io/operator/pkg/apis/istio/v1alpha1"

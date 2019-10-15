@@ -109,8 +109,8 @@ func (r *ReconcileIstioControlPlane) Reconcile(request reconcile.Request) (recon
 		return reconcile.Result{}, err
 	}
 
-	deleted := instance.GetDeletionTimestamp() != nil
-	finalizers := instance.GetFinalizers()
+	deleted := instance.Metadata.GetDeletionTimestamp() != nil
+	finalizers := instance.Metadata.GetFinalizers()
 	finalizerIndex := indexOf(finalizers, finalizer)
 
 	if deleted {
@@ -128,17 +128,17 @@ func (r *ReconcileIstioControlPlane) Reconcile(request reconcile.Request) (recon
 		}
 		// TODO: for now, nuke the resources, regardless of errors
 		finalizers = append(finalizers[:finalizerIndex], finalizers[finalizerIndex+1:]...)
-		instance.SetFinalizers(finalizers)
+		instance.Metadata.SetFinalizers(finalizers)
 		finalizerError := r.client.Update(context.TODO(), instance)
 		for retryCount := 0; errors.IsConflict(finalizerError) && retryCount < finalizerMaxRetries; retryCount++ {
 			// workaround for https://github.com/kubernetes/kubernetes/issues/73098 for k8s < 1.14
 			// TODO: make this error message more meaningful.
 			log.Info("conflict during finalizer removal, retrying")
 			_ = r.client.Get(context.TODO(), request.NamespacedName, instance)
-			finalizers = instance.GetFinalizers()
+			finalizers = instance.Metadata.GetFinalizers()
 			finalizerIndex = indexOf(finalizers, finalizer)
 			finalizers = append(finalizers[:finalizerIndex], finalizers[finalizerIndex+1:]...)
-			instance.SetFinalizers(finalizers)
+			instance.Metadata.SetFinalizers(finalizers)
 			finalizerError = r.client.Update(context.TODO(), instance)
 		}
 		if finalizerError != nil {
@@ -149,7 +149,7 @@ func (r *ReconcileIstioControlPlane) Reconcile(request reconcile.Request) (recon
 		// TODO: make this error message more meaningful.
 		log.Infof("Adding finalizer %v", finalizer)
 		finalizers = append(finalizers, finalizer)
-		instance.SetFinalizers(finalizers)
+		instance.Metadata.SetFinalizers(finalizers)
 		err = r.client.Update(context.TODO(), instance)
 		if err != nil {
 			log.Errorf("Failed to update IstioControlPlane with finalizer, %v", err)

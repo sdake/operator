@@ -18,7 +18,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/gogo/protobuf/types"
+	"github.com/protobuf/types"
 
 	"istio.io/operator/pkg/apis/istio/v1alpha1"
 )

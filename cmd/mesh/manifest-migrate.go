@@ -20,7 +20,7 @@ import (
 	"path/filepath"
 
 	"github.com/ghodss/yaml"
-	"github.com/gogo/protobuf/jsonpb"
+        "github.com/golang/protobuf/jsonpb"
 	"github.com/spf13/cobra"
 
 	"istio.io/operator/pkg/kubectlcmd"

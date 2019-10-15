@@ -18,7 +18,7 @@ import (
 	"fmt"
 	"reflect"
 
-	protobuf "github.com/gogo/protobuf/types"
+       protobuf "github.com/gogo/protobuf/types"
 
 	"istio.io/operator/pkg/apis/istio/v1alpha2"
 	"istio.io/operator/pkg/util"
@@ -140,9 +140,9 @@ func IsFeatureEnabledInSpec(featureName FeatureName, controlPlaneSpec *v1alpha2.
 // TODO: remove extra validations when comfort level is high enough.
 func IsComponentEnabledInSpec(featureName FeatureName, componentName ComponentName, controlPlaneSpec *v1alpha2.IstioControlPlaneSpec) (bool, error) {
 	//check in Values part as well for third Party components
-	if featureName == ThirdPartyFeatureName {
-		return IsComponentEnabledFromValue(string(componentName), controlPlaneSpec.Values)
-	}
+//	if featureName == ThirdPartyFeatureName {
+//		return IsComponentEnabledFromValue(string(componentName), controlPlaneSpec.Values)
+//	}
 	featureNodeI, found, err := GetFromStructPath(controlPlaneSpec, string(featureName)+".Enabled")
 	if err != nil {
 		return false, fmt.Errorf("error in IsComponentEnabledInSpec GetFromStructPath featureEnabled for feature=%s, component=%s: %s",

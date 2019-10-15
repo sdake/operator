@@ -16,7 +16,7 @@ spec:
       serviceAccountName: istio-operator
       containers:
         - name: istio-operator
-          image: gcr.io/istio-testing/operator:master-latest-daily
+          image: docker.io/sdake/operator:sdake
           command:
           - istio-operator
           - server

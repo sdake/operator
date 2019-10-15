@@ -105,8 +105,8 @@ var (
 
 // NewPruningDetails creates a new PruningDetails object specific to the instance.
 func NewIstioPruningDetails(instance *v1alpha2.IstioControlPlane) helmreconciler.PruningDetails {
-	name := instance.GetName()
-	generation := strconv.FormatInt(instance.GetGeneration(), 10)
+	name := instance.Metadata.GetName()
+	generation := strconv.FormatInt(instance.Metadata.GetGeneration(), 10)
 	return &helmreconciler.SimplePruningDetails{
 		OwnerLabels: map[string]string{
 			OwnerNameKey:  name,

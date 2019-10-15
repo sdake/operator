@@ -15,7 +15,7 @@
 package v1alpha2
 
 import (
-	"github.com/gogo/protobuf/proto"
+       "github.com/gogo/protobuf/proto"
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 

@@ -17,7 +17,7 @@ package v1alpha2
 // TODO: create remaining enum types.
 
 import (
-	"github.com/gogo/protobuf/jsonpb"
+        "github.com/golang/protobuf/jsonpb"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/util/intstr"

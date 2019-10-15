@@ -18,7 +18,7 @@ import "k8s.io/api/core/v1/generated.proto";
 import "k8s.io/api/autoscaling/v2beta1/generated.proto";
 import "k8s.io/apimachinery/pkg/apis/meta/v1/generated.proto";
 import "k8s.io/apimachinery/pkg/runtime/generated.proto";
-import "github.com/gogo/protobuf/protobuf/google/protobuf/wrappers.proto";
+import "google/protobuf/wrappers.proto";
 
 // $title: Operator Installation
 // $description: Configuration for Istio control plane installation through the Operator.
@@ -166,12 +166,12 @@ package v1alpha2;
 
 // IstioControlPlane is a CustomResourceDefinition (CRD) describing an Istio control plane.
 message IstioControlPlane {
+    // Defines the object meta
+    k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
     // Spec defines the desired state of IstioControlPlane.
     IstioControlPlaneSpec spec = 3;
     // Status reports the status of the Istio control plane.
     InstallStatus status = 4;
-    string kind = 5;
-    string apiVersion = 6;
 }
 
 // IstioControlPlaneSpec defines the desired state of IstioControlPlane.
