@@ -75,7 +75,7 @@ ISTIO_DIR="${GOPATH}/src/istio.io/istio"
 # Create a clone of the Istio repository
 if [[ ! -d "${ISTIO_DIR}" ]]
 then
-  git clone https://github.com/sdake/istio.git "${ISTIO_DIR}"
+  git clone https://github.com/istio/istio.git "${ISTIO_DIR}"
 fi
 
 # Create an operator manifest from the default control plane configuration
