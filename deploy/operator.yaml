@@ -16,11 +16,11 @@ spec:
       serviceAccountName: istio-operator
       containers:
         - name: istio-operator
-          image: gcr.io/istio-testing/operator:master-latest-daily
+          image: gcr.io/istio-testing/operator:istio-testing
           command:
           - istio-operator
           - server
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
           env:
             - name: WATCH_NAMESPACE
               value: ""
