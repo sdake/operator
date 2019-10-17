@@ -61,7 +61,7 @@ EOF
 }
 
 function setup_docker() {
-  HUB=istio-testing TAG=latest make -f Makefile.core.mk controller docker
+  HUB=istio-testing TAG=istio-testing make -f Makefile.core.mk controller docker
   kind --loglevel debug --name istio-testing load docker-image istio-testing/operator:istio-testing
 }
 
@@ -95,5 +95,5 @@ kubectl get pods --all-namespaces -o wide
 pushd "${ISTIO_DIR}" || exit
   make istioctl
 
-  HUB=gcr.io/istio-testing TAG=latest E2E_ARGS="--use_operator --test_logs_path=${ARTIFACTS}" make e2e_simple_run
+  HUB=gcr.io/istio-testing TAG=istio-testing E2E_ARGS="--use_operator --test_logs_path=${ARTIFACTS}" make e2e_simple_run
 popd
