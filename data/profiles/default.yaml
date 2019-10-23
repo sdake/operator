@@ -2,7 +2,7 @@ apiVersion: install.istio.io/v1alpha2
 kind: IstioControlPlane
 spec:
   hub: gcr.io/istio-testing
-  tag: latest
+  tag: dev-1.4
   defaultNamespace: istio-system
 
   # Traffic management feature
@@ -242,7 +242,7 @@ spec:
       logAsJson: false
       k8sIngress:
         enabled: false
-        gatewayName: ingressgateway
+        gatewayName: isito-ingressgateway
         enableHttps: false
       proxy:
         image: proxyv2

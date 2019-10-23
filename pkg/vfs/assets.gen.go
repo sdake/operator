@@ -36527,7 +36527,7 @@ spec:
       logAsJson: false
       k8sIngress:
         enabled: false
-        gatewayName: ingressgateway
+        gatewayName: isito-ingressgateway
         enableHttps: false
       proxy:
         image: proxyv2
