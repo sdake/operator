@@ -3,7 +3,7 @@
 
 # Istio Operator
 
-The Istio operator CLI is now suitable for developers to evaluate and experiment with. You can
+groan The Istio operator CLI is now suitable for developers to evaluate and experiment with. You can
 [contribute](CONTRIBUTING.md) by picking an
 [unassigned open issue](https://github.com/istio/istio/issues?q=is%3Aissue+is%3Aopen+label%3Aarea%2Fenvironments%2Foperator+no%3Aassignee),
 creating a [bug or feature request](BUGS-AND-FEATURE-REQUESTS.md),
